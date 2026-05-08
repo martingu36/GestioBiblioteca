@@ -33,6 +33,16 @@ public class Biblioteca {
         // Si no se encuentra el libro, devolver NULL
         return null;
     }
+    // Busca
+    public List<Llibre> buscarPerCategoria(String categoria) {
+        List<Llibre> resultat = new ArrayList<>();
 
-    
+        for (Llibre llibre : llibres) {
+            if (llibre.getCategoria().toLowerCase() == categoria.toLowerCase()) {
+                resultat.add(llibre);
+            }
+        }
+
+        return resultat;
+    }
 }

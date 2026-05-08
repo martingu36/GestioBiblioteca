@@ -1,25 +1,54 @@
 public class Llibre {
+
+    // Propietats de la Classe
     private String titol;
     private String autor;
     private boolean prestat;
-        public Llibre(String titol, String autor) {
-            this.titol = titol;
-            this.autor = autor;
-            this.prestat = false;
-        }
-public String getTitol() { return titol; }
+    private String categoria;
+    
+    public Llibre(String titol, String autor, int index) {
+        this.titol = titol;
+        this.autor = autor;
+        this.prestat = false;
+        this.categoria = setCategoria(index);
+    }
+    
+    public String getCategoria (){
+        return this.categoria;
+    }
 
-public String getAutor() { return autor; }
+    //Enum de categories 
+    public String setCategoria(int index){
+        String [] categoria = {"Historia", "Literatura", "Ciencia", "Filosofía"};
+        return categoria[index];
+    }
 
-public boolean esPrestat() { return prestat; }
+    public String getTitol() {
+        return titol;
+    }
 
-public void prestar() { prestat = true; }
+    public String getAutor() {
+        return autor;
+    }
 
-public void retornar() { prestat = false; }
+    public boolean esPrestat() {
+        return prestat;
+    }
 
+    public void prestar() {
+        prestat = true;
+    }
 
-@Override
-public String toString() {
-return titol + " de " + autor + (prestat ? " (En préstec)" : " (Disponible)");
-}
+    public void retornar() {
+        prestat = false;
+    }
+
+    
+
+    
+
+    @Override
+    public String toString() {
+        return titol + " de " + autor + (prestat ? " (En préstec)" : " (Disponible)");
+    }
 }

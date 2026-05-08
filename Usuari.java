@@ -4,10 +4,12 @@ import java.util.List;
 public class Usuari {
     private String nom;
     private List<Llibre> llibresPrestats;
+    private List<Prestec> historialPrestecs;
 
     public Usuari(String nom) {
         this.nom = nom;
         this.llibresPrestats = new ArrayList<>();
+        this.historialPrestecs = new ArrayList<>();
     }
 
     public String getNom() {
@@ -27,6 +29,8 @@ public class Usuari {
     }
 
     /*Metodos propios de la clase Usuario */
+
+  
 
     //Listar usuarios
     public static void listarUsuaris(List<Usuari> usuaris) {
@@ -55,5 +59,29 @@ public class Usuari {
                 System.out.println("El usuario" +  nomUsuario + "No existe");
             } 
     }
+
+
+      //Hisotrial de libros prestados;
+
+     public void afegirPrestec(Prestec prestec) {
+        historialPrestecs.add(prestec);
+    }
+
+    public void listarHistorial(){
+        System.out.println("Historial de " + nom);
+
+    for (Prestec p : historialPrestecs) {
+
+        System.out.println(
+            "- " +
+            p.getLlibre().getTitol()
+            + " | Data préstec: "
+            + p.getDataPrestec()
+            + " | Retorn: "
+            + p.getDataRetorn()
+        );
+    }
+    }
+
 
 }

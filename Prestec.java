@@ -11,6 +11,7 @@ public class Prestec {
         this.llibre = llibre;
         this.dataPrestec = dataPrestec;
         this.dataRetorn = dataPrestec.plusWeeks(2);
+        llibre.actualitzaContador(); 
     }
 
     public Usuari getUsuari() {
@@ -23,5 +24,9 @@ public class Prestec {
 
     public LocalDate getDataRetorn() {
         return dataRetorn;
+    }
+
+    public LocalDate getDataPrestec() {
+        return dataPrestec;
     }
 }

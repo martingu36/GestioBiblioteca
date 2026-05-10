@@ -33,16 +33,42 @@ public class Biblioteca {
         // Si no se encuentra el libro, devolver NULL
         return null;
     }
-    // Busca
+    // Buscar libros según categoría
     public List<Llibre> buscarPerCategoria(String categoria) {
         List<Llibre> resultat = new ArrayList<>();
 
         for (Llibre llibre : llibres) {
-            if (llibre.getCategoria().toLowerCase() == categoria.toLowerCase()) {
+            if (llibre.getCategoria().equalsIgnoreCase(categoria)) {
                 resultat.add(llibre);
             }
         }
 
         return resultat;
+    }
+    // Ordenar libros según cantidad de prestaciones
+    public List<Llibre> llibresMesPrestats() {
+        List<Llibre> ordenats = new ArrayList<>(llibres);
+
+        ordenats.sort((a, b) ->
+            Integer.compare(b.getVegadesPrestat(), a.getVegadesPrestat())
+        );
+
+        return ordenats;
+    }
+    // Mostrar libros más prestados
+    public void mostrarTopLlibres(int top) {
+        List<Llibre> ordenats = llibresMesPrestats();
+
+        System.out.println("=== Llibres més prestats ===");
+
+        for (int i = 0; i < Math.min(top, ordenats.size()); i++) {
+            Llibre l = ordenats.get(i);
+
+            System.out.println(
+                (i + 1) + ". " +
+                l.getTitol() +
+                " (" + l.getVegadesPrestat() + " préstecs)"
+            );
+        }
     }
 }
